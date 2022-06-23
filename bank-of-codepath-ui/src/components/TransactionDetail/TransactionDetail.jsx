@@ -24,20 +24,20 @@ export default function TransactionDetail() {
     setHasFetched(false)
     axios.get(`http://localhost:3001/bank/transactions/${transactionId}`)
     .then((response) => {
-      console.log(response.data)
-      setTransaction(response.data)
+      console.log(response.data.transaction)
+      setTransaction(response.data.transaction)
     })
     .catch( (err) => {
       setError(err)
     })
     .then(() => {
       setIsLoading(false)
-      setHasFetched(false)
+      setHasFetched(true)
     })
   }, [transactionId])
   return (
     <div className="transaction-detail">
-      <TransactionCard />
+      <TransactionCard transactionId={transactionId} transaction={transaction}/>
     </div>
   )
 }
@@ -47,11 +47,12 @@ export function TransactionCard({ transaction = {}, transactionId = null }) {
     <div className="transaction-card card">
       <div className="card-header">
         <h3>Transaction #{transactionId}</h3>
-        <p className="category"></p>
+        {transaction ? <h1>Not Found</h1> : <></>}
+        <p className="category">{transaction.category ? transaction.category : <></>}</p>
       </div>
 
       <div className="card-content">
-        <p className="description"></p>
+        <p className="description">{transaction.description ? transaction.description : <></>}</p>
       </div>
 
       <div className="card-footer">
