@@ -15,7 +15,7 @@ export default function BankActivity(props) {
           <span className="col x15">Date</span>
         </div>
         {props.transactions ? props.transactions.map((transaction,idx) => {
-          return <Link to={`/transactions/${idx+12}`}><TransactionRow transaction={transaction} key={idx}/></Link>
+          return <TransactionRow transaction={transaction} key={idx}/>
         }) : <> </>}
       </div>
 
@@ -37,6 +37,7 @@ export default function BankActivity(props) {
 
 export function TransactionRow({ transaction = {} }) {
   return (
+    <Link to={`/transactions/${transaction.id}`}>
     <div className="table-row transaction-row">
       <span className="col x4">
         <Arrow amount={transaction.amount} />
@@ -46,6 +47,7 @@ export function TransactionRow({ transaction = {} }) {
       <span className="col x2">{formatAmount(transaction.amount)}</span>
       <span className="col x15">{formatDate(transaction.postedAt)}</span>
     </div>
+    </Link>
   )
 }
 

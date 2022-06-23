@@ -24,7 +24,6 @@ export default function TransactionDetail() {
     setHasFetched(false)
     axios.get(`http://localhost:3001/bank/transactions/${transactionId}`)
     .then((response) => {
-      console.log(response.data.transaction)
       setTransaction(response.data.transaction)
     })
     .catch( (err) => {
