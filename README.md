@@ -7,6 +7,7 @@ For this activity, you'll be building out the UI for a new financial application
 Your job is to wire up the React UI to interact with the already built Express API. Data in the Express API is persisted using a JSON file that will store all user activity.
 
 ## Project Details
+![Bank-of-Codepath-Lab-8-July-2022](https://user-images.githubusercontent.com/54002497/178086049-fcf47386-4836-4e95-82e5-2834d32fcafb.gif)
 
 ### Goals
 
